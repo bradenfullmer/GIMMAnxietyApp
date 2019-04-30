@@ -16,7 +16,7 @@ declare var google;
 export class HomePage implements OnInit {
 @ViewChild('map') mapElement: ElementRef;
 public base64Image: string;
-locationsList$: Observable<Location[]>;
+locationsList: Location;
 map: any;
 position: any;
 locationKey: any;
@@ -26,11 +26,7 @@ public Buildings: string;
 
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
-    this.locationsList$ = this.firebaseService.getBuildingLocation().snapshotChanges().map(changes => {
-      return changes.map( c=> ({
-        key: c.payload.key, ...c.payload.val()
-      }));
-    });
+      this.locationsList = this.firebaseService.getBuildingLocation();
   }
 
   ngOnInit() {
@@ -71,7 +67,7 @@ addMarker(location: any){
 assignLocation(loc: Location){
   this.firebaseService.setCurrentLocation(loc);
   this.currentLoc = loc;
-  this.locationKey = loc.key;
+  this.locationKey = loc.Key;
   console.log("Assigned location key: " + this.locationKey);
 }
 addInfoWindow(marker, location){
