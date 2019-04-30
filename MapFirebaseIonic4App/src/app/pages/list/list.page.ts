@@ -22,7 +22,6 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
     console.log("Got: " + this.activatedRoute.snapshot.paramMap.get('locationTitle'));
-    this.base64Image = this.location.picture;
   }
 
   editLocation(location: Location) {
@@ -42,7 +41,6 @@ export class ListPage implements OnInit {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       this.base64Image = "data:image/jpeg;base64," + imageData;
-      this.location.picture = this.base64Image;
       }, (err) => {
       // Handle error
       });
