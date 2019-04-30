@@ -38,7 +38,7 @@ export class FirebaseService {
                     this.buildingLocation = item;
                 }
                 else {
-                    console.log("NOT A MATCH: " + item.Key);
+                    //console.log("NOT A MATCH: " + item.Key);
                 }
                 //this.addMarker(item);
                 //this.position = new google.maps.LatLng(item.Lat, item.Long);
@@ -62,7 +62,9 @@ export class FirebaseService {
   }
   getLocationsList(){
     return this.locationListRef;
-  }
+    }
+
+
   addLocation(location: Location){
     return this.locationListRef.push(location);
   }

@@ -26,7 +26,7 @@ public Buildings: string;
 
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
-    this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
+    this.locationsList$ = this.firebaseService.getBuildingLocation().snapshotChanges().map(changes => {
       return changes.map( c=> ({
         key: c.payload.key, ...c.payload.val()
       }));

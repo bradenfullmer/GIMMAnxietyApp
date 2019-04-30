@@ -13,13 +13,12 @@
   <div #map id="map"></div>
   <ion-list>
     <ion-list-header>
-    Locations:
+    Your class is at:
     </ion-list-header>
-      <ion-item
-        *ngFor="let location of locationsList$ | async"
-        (click)="assignLocation(location)"
-        [routerLink]="['/list', Buildings]" routerDirection="forward">
-          {{location.title}}
-      </ion-item>
+    <ion-item *ngFor="let location of locationsList$ | async"
+              (click)="assignLocation(location)"
+              [routerLink]="['/list', Buildings]" routerDirection="forward">
+        {{buildingLocation.BuildingName}}
+    </ion-item>
     </ion-list>
 </ion-content>
