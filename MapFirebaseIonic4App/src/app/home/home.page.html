@@ -15,10 +15,8 @@
     <ion-list-header>
     Your class is at:
     </ion-list-header>
-    <ion-item *ngFor="let location of locationsList$ | async"
-              (click)="assignLocation(location)"
-              [routerLink]="['/list', Buildings]" routerDirection="forward">
-        {{buildingLocation.BuildingName}}
+    <ion-item>
+        {{locationList.BuildingName}}
     </ion-item>
     </ion-list>
 </ion-content>
