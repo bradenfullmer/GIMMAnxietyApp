@@ -4,6 +4,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Location } from '../models/location.model';
 import 'firebase/storage';
+import 'rxjs-compat/add/operator/map';
+import { Observable } from 'rxjs-compat/Observable';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,9 +29,19 @@ export class FirebaseService {
     }
 
     checkBuilding() {
-        console.log(this.getBuildingCode + " " + this.locationListRef);
-        this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
-        
+        //console.log(this.getBuildingCode() + " " + this.locationListRef);
+        //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
+        this.getLocationsList().valueChanges().subscribe(res => {
+            for (let item of res) {
+                if (item.key == this.getBuildingCode()) {
+                    console.log("Value matched" + this.getBuildingCode());
+                    this.buildingLocation = item;
+                }
+                //this.addMarker(item);
+                //this.position = new google.maps.LatLng(item.Lat, item.Long);
+                //this.map.setCenter(this.position);
+            }
+        });
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
@@ -44,7 +58,7 @@ export class FirebaseService {
     return this.currentLocation;
   }
   getLocationsList(){
-    return this.buildingLocation;
+    return this.locationListRef;
   }
   addLocation(location: Location){
     return this.locationListRef.push(location);
