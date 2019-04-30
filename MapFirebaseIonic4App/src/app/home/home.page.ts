@@ -26,7 +26,7 @@ public Buildings: string;
 
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
-      this.locationsList = this.firebaseService.getBuildingLocation();
+      //this.locationsList = this.firebaseService.getBuildingLocation();
   }
 
   ngOnInit() {
@@ -47,13 +47,13 @@ public Buildings: string;
       }
     });
   }
-  onContextChange(ctxt: string): void {
-  this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
-    return changes.map( c=> ({
-      key: c.payload.key, ...c.payload.val()
-    }));
-  });
-}
+  //onContextChange(ctxt: string): void {
+  //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
+  //  return changes.map( c=> ({
+  //    key: c.payload.key, ...c.payload.val()
+  //  }));
+  //});
+//}
 addMarker(location: any){
   let latLng = new google.maps.LatLng(location.Lat, location.Long);
   let marker = new google.maps.Marker({
