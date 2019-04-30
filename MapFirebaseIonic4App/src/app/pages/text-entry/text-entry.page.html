@@ -1,13 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Enter Class Number</ion-title>
+  <ion-toolbar class = "new-header-color">
+    <ion-title class = "new-text-color">Enter Class Number</ion-title>
     <ion-buttons slot="start">
-  <ion-back-button defaultHref="/login"></ion-back-button>
+  <ion-back-button class ="new-text-color" defaultHref="/login"></ion-back-button>
 </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input autocapitalize="on" autofocus="true" [(ngModel)]="bCode" placeholder="Enter Room Number"></ion-input>
-    <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Submit</ion-button>
+  <div style="padding: 5rem 0rem 0rem;">
+  <ion-input class="center" autocapitalize="on" autofocus="true" [(ngModel)]="bCode" placeholder="Enter Room Number" style= "border: 3px solid black"></ion-input>
+  </div>
+<div style="text-align:center; padding: 5rem 0rem 0rem;">
+  <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Submit</ion-button>
+</div>
 </ion-content>
