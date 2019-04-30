@@ -1,5 +1,5 @@
 export interface Location {
-  key?: string,
+  Key: string,
   BuildingName: string,
   Lat: number,
   Long: number
