@@ -21,7 +21,7 @@ map: any;
 position: any;
 locationKey: any;
 currentLoc: any;
-public locationTitle: string;
+public Buildings: string;
 
 
   constructor(private router: Router, private geolocation: Geolocation,
@@ -46,7 +46,7 @@ public locationTitle: string;
     this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
       for (let item of res) {
         this.addMarker(item);
-        this.position = new google.maps.LatLng(item.latitude, item.longitude);
+        this.position = new google.maps.LatLng(item.Lat, item.Long);
         this.map.setCenter(this.position);
       }
     });
@@ -59,7 +59,7 @@ public locationTitle: string;
   });
 }
 addMarker(location: any){
-  let latLng = new google.maps.LatLng(location.latitude, location.longitude);
+  let latLng = new google.maps.LatLng(location.Lat, location.Long);
   let marker = new google.maps.Marker({
     map: this.map,
     animation: google.maps.Animation.DROP,
@@ -72,15 +72,14 @@ assignLocation(loc: Location){
   this.firebaseService.setCurrentLocation(loc);
   this.currentLoc = loc;
   this.locationKey = loc.key;
-  this.locationTitle = loc.title;
   console.log("Assigned location key: " + this.locationKey);
 }
 addInfoWindow(marker, location){
   let contentString = '<div class="info-window" id="clickableItem" >' +
-     '<h3>' + location.title + '</h3>' +
+     '<h3>' +'</h3>' +
      '<div class="info-content">' +
-     '<img src="' + location.picture + '" style="width:30px;height:30px;border-radius: 50%; padding: 20px, 20px, 20px, 20px;"/>' +
-     '<p>' + location.content + '</p>' +
+     '<img src="'+ '" style="width:30px;height:30px;border-radius: 50%; padding: 20px, 20px, 20px, 20px;"/>' +
+     '<p>' + location.BuildingName + '</p>' +
      '</div>' +
      '</div>';
 
@@ -94,8 +93,8 @@ addInfoWindow(marker, location){
        clickableItem.addEventListener('click', () => {
          console.log("clicked on marker");
          this.firebaseService.setCurrentLocation(location);
-         this.locationTitle = location.title;
-         this.router.navigate(['/list', this.locationTitle]);
+         this.Buildings = location.BuildingName;
+         this.router.navigate(['/list', this.Buildings]);
        });
      });
      google.maps.event.addListener(marker, 'click',() => {

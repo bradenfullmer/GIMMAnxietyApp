@@ -18,7 +18,7 @@
       <ion-item
         *ngFor="let location of locationsList$ | async"
         (click)="assignLocation(location)"
-        [routerLink]="['/list', locationTitle]" routerDirection="forward">
+        [routerLink]="['/list', Buildings]" routerDirection="forward">
           {{location.title}}
       </ion-item>
     </ion-list>
