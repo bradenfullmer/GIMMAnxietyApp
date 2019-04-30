@@ -12,10 +12,10 @@
 <ion-content>
   <div #map id="map"></div>
   <ion-list>
-    <ion-list-header>
-    Your class is at:
-    </ion-list-header>
-    <ion-item [(ngModel])="buildingLocation.BuildingName">
-    </ion-item>
-    </ion-list>
+      <ion-list-header>
+          Your class is at:
+      </ion-list-header>
+      <ion-label color="dark">{{locationList.BuildingName}}</ion-label>
+
+  </ion-list>
 </ion-content>
