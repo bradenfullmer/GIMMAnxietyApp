@@ -25,7 +25,8 @@ export class FirebaseService {
     }
 
     checkBuilding() {
-        this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode()));
+        console.log(this.getBuildingCode + " " + this.locationListRef);
+        this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
         
     }
     setBuildingLocation(loc: Location) {
