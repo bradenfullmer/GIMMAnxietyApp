@@ -33,12 +33,12 @@ export class FirebaseService {
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
-                if (item.key == this.getBuildingCode()) {
+                if (item.Key == this.getBuildingCode()) {
                     console.log("Value matched: " + this.getBuildingCode());
                     this.buildingLocation = item;
                 }
                 else {
-                    console.log("NOT A MATCH: " + item.key);
+                    console.log("NOT A MATCH: " + item.Key);
                 }
                 //this.addMarker(item);
                 //this.position = new google.maps.LatLng(item.Lat, item.Long);
