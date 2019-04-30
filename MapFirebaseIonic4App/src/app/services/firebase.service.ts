@@ -49,13 +49,13 @@ export class FirebaseService {
   getLocationsList(){
     return this.buildingLocation;
   }
-  //addLocation(location: Location){
-  //  return this.locationListRef.push(location);
-  //}
-  //editLocation(location: Location){
-  //  return this.locationListRef.update(location.key, location);
-  //}
-  //deleteLocation(location: Location){
-  //  return this.locationListRef.remove(location.key);
-  //}
+  addLocation(location: Location){
+   return this.locationListRef.push(location);
+  }
+  editLocation(location: Location){
+    return this.locationListRef.update(location.key, location);
+  }
+  deleteLocation(location: Location){
+    return this.locationListRef.remove(location.key);
+  }
 }
