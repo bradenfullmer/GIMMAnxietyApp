@@ -16,6 +16,7 @@ export class FirebaseService {
 
     setBuildingCode(bCode: string) {
         bCode = bCode.replace(/[0-9]/g, '');
+        bCode = bCode.toUpperCase();
         console.log(bCode);
         this.buildingCode = bCode;
     }
@@ -50,7 +51,7 @@ export class FirebaseService {
     return this.buildingLocation;
   }
   addLocation(location: Location){
-   return this.locationListRef.push(location);
+    return this.locationListRef.push(location);
   }
   editLocation(location: Location){
     return this.locationListRef.update(location.key, location);
