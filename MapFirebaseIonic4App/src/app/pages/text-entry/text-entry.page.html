@@ -8,5 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-input placeholder="Enter Room Number"></ion-input>
+  <ion-input autocapitalize="on" autofocus="true" [(ngModel)]="bCode" placeholder="Enter Room Number"></ion-input>
+    <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Submit</ion-button>
 </ion-content>
