@@ -25,13 +25,8 @@ export class FirebaseService {
     }
 
     checkBuilding() {
-
-        this.locationListRef.forEach(function (value, bCode:string = this.getBuildingCode()) {
-            if (bCode == value.key) {
-                console.log("The Key has matched");
-                this.setBuildingLocation(value);
-            }
-        });
+        buldinglocation = this.locationListRef.equalTo(this.getBuildingCode());
+        
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
