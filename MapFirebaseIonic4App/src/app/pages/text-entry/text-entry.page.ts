@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { FirebaseService } from '../../services/firebase.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-text-entry',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextEntryPage implements OnInit {
 
-  constructor() { }
+    constructor(private router: Router, private geolocation: Geolocation, public firebaseService: FirebaseService) { }
 
-  ngOnInit() {
-  }
+    bCode: string;
 
+    ngOnInit() {
+
+    }
+    loadMapPage() {
+        this.router.navigate(['../home']);
+        this.firebaseService.setBuildingCode(this.bCode);
+
+    }
 }
