@@ -20,7 +20,7 @@ export class TextEntryPage implements OnInit {
     }
     loadMapPage() {
         //this.firebaseService.checkBuilding();
-        
+
 
         (async () => {
             // Do something before delay

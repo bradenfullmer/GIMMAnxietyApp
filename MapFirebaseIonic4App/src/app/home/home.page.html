@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class = "new-header-color">
-    <ion-title class = "new-text-color">
-      Navagation
+    <ion-title class = "new-text-color" style="font:.9rem;">
+      {{location}}
     </ion-title>
     <ion-buttons slot="start" class = "new-text-color">
         <ion-back-button defaultHref="/pages/login"></ion-back-button>
@@ -12,10 +12,10 @@
 <ion-content>
   <div #map id="map"></div>
   <ion-list>
-      <ion-list-header>
-          Your class is at:
+      <ion-list-header style="font:1.1rem underline; padding: 1rem 0 0 1rem;">
+          <u>Your class is at:</u>
       </ion-list-header>
-      <ion-label color="dark">{{location}}</ion-label>
+      <ion-label color="dark" Style="font:1.1rem; text-align: center; padding-top: 1rem">{{location}}</ion-label>
 
   </ion-list>
 </ion-content>
