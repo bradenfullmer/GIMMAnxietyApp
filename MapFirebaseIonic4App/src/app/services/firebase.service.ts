@@ -59,7 +59,7 @@ export class FirebaseService {
         return this.buildingLocation;
     }
 
-    getStaticLocation() {
+    public static getStaticLocation() {
         return FirebaseService.staticBuilding;
     }
 
