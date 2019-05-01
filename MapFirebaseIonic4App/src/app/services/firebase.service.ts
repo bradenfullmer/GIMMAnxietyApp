@@ -36,6 +36,7 @@ export class FirebaseService {
         console.log(this.getBuildingCode() + " " + this.locationListRef);
         //FirebaseService.newLocList = new Array<Location>();
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
+        var matched = false;
 
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
@@ -45,6 +46,7 @@ export class FirebaseService {
                     this.setBuildingLocation(item);
                     console.log(this.getBuildingLocation());
                     FirebaseService.newLocList.push(item);
+                    matched = true;
                 }
                 else {
                     //console.log("NOT A MATCH: " + item.Key);
@@ -54,6 +56,10 @@ export class FirebaseService {
                 //this.map.setCenter(this.position);
             }
         });
+
+        if (matched) {
+            console.log("Matched");
+        }
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;

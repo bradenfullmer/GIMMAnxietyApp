@@ -48,7 +48,7 @@ public Buildings: string;
         this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
         this.firebaseService.checkBuilding();
-        console.log(FirebaseService.getPosList);
+        console.log(FirebaseService.getPosList());
         
         for (let item of FirebaseService.getPosList()) {
             console.log(item.BuildingName);
