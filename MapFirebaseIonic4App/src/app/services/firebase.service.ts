@@ -33,11 +33,12 @@ export class FirebaseService {
     static checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
-        this.getLocationsList().valueChanges().subscribe(res => {
+        FirebaseService.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
                 if (item.Key == this.getBuildingCode()) {
                     console.log("Value matched: " + this.getBuildingCode());
-                    this.buildingLocation = item;
+                    this.setBuildingLocation(item);
+                    console.log(this.getBuildingLocation());
                 }
                 else {
                     //console.log("NOT A MATCH: " + item.Key);
