@@ -15,7 +15,7 @@ export class FirebaseService {
     public currentLocation: Location;
     public buildingLocation: Location;
 
-    private static newLocList: Array<Location>;
+    private static newLocList: Array<Location> = new Array<Location>();
 
     public static staticBuilding: Location;
 
