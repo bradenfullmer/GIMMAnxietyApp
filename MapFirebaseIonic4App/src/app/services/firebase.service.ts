@@ -52,6 +52,7 @@ export class FirebaseService {
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
         FirebaseService.staticBuilding = loc;
+        console.log("The Static building is: " + FirebaseService.staticBuilding);
     }
 
     getBuildingLocation() {
@@ -59,7 +60,7 @@ export class FirebaseService {
     }
 
     public static getStaticLocation() {
-        return this.staticBuilding;
+        return FirebaseService.staticBuilding;
     }
 
     constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
