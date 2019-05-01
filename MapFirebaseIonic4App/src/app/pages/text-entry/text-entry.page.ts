@@ -21,12 +21,27 @@ export class TextEntryPage implements OnInit {
     loadMapPage() {
         //this.firebaseService.checkBuilding();
         this.firebaseService.setBuildingCode(this.bCode);
-        this.firebaseService.checkBuilding();
+        this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
+            for (let item of res) {
+                if (item.Key == this.firebaseService.getBuildingCode()) {
+                    console.log("Value matched: " + this.firebaseService.getBuildingCode());
+                    this.firebaseService.setBuildingLocation(item);
+                    console.log(this.firebaseService.getBuildingLocation());
+                }
+                else {
+                    //console.log("NOT A MATCH: " + item.Key);
+                }
+                //this.addMarker(item);
+                //this.position = new google.maps.LatLng(item.Lat, item.Long);
+                //this.map.setCenter(this.position);
+            }
+        });
+        //this.firebaseService.checkBuilding();
 
         (async () => {
             // Do something before delay
             console.log('before delay');
-            await this.delay(1000);
+            await this.delay(10000);
 
             // Do something after
             console.log('after delay');
@@ -36,6 +51,7 @@ export class TextEntryPage implements OnInit {
             } else {
                 console.log("Location issues... again");
             }
+
         })();
     }
 
