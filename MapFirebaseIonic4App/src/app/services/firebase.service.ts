@@ -58,6 +58,7 @@ export class FirebaseService {
                 //this.map.setCenter(this.position);
             }
         });
+        this.goToMap();
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
