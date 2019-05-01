@@ -86,13 +86,13 @@ export class FirebaseService {
 
     addCurrentLoc(curPos) {
         var location: Location = {
-            Key: '',
+            Key: 'QWERTY',
             BuildingName: 'You are Here',
             Lat: curPos.latitude,
             Long: curPos.longitude
         }
 
-        //console.log(FirebaseService.newLocList.length);
+        console.log(location);
 
         FirebaseService.newLocList.push(location);
 
