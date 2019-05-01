@@ -59,7 +59,7 @@ export class FirebaseService {
     }
 
     public static getStaticLocation() {
-        return FirebaseService.staticBuilding;
+        return this.staticBuilding;
     }
 
     constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
