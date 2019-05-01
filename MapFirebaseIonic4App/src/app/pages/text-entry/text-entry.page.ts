@@ -22,6 +22,7 @@ export class TextEntryPage implements OnInit {
         //this.firebaseService.checkBuilding();
         this.firebaseService.setBuildingCode(this.bCode);
         //this.firebaseService.checkBuilding();
+        console.log(this.geolocation.getGurrentPosition());
         this.firebaseService.addCurrentLoc(this.geolocation.getCurrentPosition());
         //if (FirebaseService.getStaticLocation()) {
         //    this.router.navigate(['../home']);
