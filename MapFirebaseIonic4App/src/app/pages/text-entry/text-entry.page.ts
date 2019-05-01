@@ -20,7 +20,7 @@ export class TextEntryPage implements OnInit {
     }
     loadMapPage() {
         this.firebaseService.setBuildingCode(this.bCode);
-        this.firebaseService.checkBuilding();
+        //this.firebaseService.checkBuilding();
         this.router.navigate(['../home']);
 
     }
