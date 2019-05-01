@@ -16,7 +16,7 @@ declare var google;
 export class HomePage implements OnInit {
 @ViewChild('map') mapElement: ElementRef;
 public base64Image: string;
-    locationsList: Location;
+    locationsList: Array<string>;
     location: string;
 map: any;
 position: any;
@@ -47,11 +47,13 @@ public Buildings: string;
         }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
         
-      for (let item of FirebaseService.getPosList()) {
-        this.addMarker(item);
-        this.position = new google.maps.LatLng(item.Lat, item.Long);
-        this.map.setCenter(this.position);
-      }
+        for (let item of FirebaseService.getPosList()) {
+            console.log(item.BuildingName);
+            this.addMarker(item);
+            this.locationsList.push(item.BuildingName);
+            this.position = new google.maps.LatLng(item.Lat, item.Long);
+            this.map.setCenter(this.position);
+        }
   }
   //onContextChange(ctxt: string): void {
   //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
