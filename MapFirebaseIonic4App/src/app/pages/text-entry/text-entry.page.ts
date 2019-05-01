@@ -23,21 +23,11 @@ export class TextEntryPage implements OnInit {
         this.firebaseService.setBuildingCode(this.bCode);
         //this.firebaseService.checkBuilding();
         this.firebaseService.addCurrentLoc(this.geolocation.getCurrentPosition());
-
-        (async () => {
-            // Do something before delay
-            console.log('before delay');
-            await this.delay(10000);
-
-            // Do something after
-            console.log('after delay');
-
-            if (FirebaseService.getStaticLocation()) {
-                this.router.navigate(['../home']);
-            } else {
-                console.log("Location issues... again");
-            }
-        })();
+        if (FirebaseService.getStaticLocation()) {
+            this.router.navigate(['../home']);
+        } else {
+            console.log("Location issues... again");
+        }
     }
 
     delay(ms: number) {

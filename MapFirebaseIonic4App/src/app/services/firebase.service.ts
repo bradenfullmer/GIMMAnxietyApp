@@ -34,7 +34,7 @@ export class FirebaseService {
 
     checkBuilding() {
         console.log(this.getBuildingCode() + " " + this.locationListRef);
-        FirebaseService.newLocList = new Array<Location>();
+        //FirebaseService.newLocList = new Array<Location>();
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
 
         this.getLocationsList().valueChanges().subscribe(res => {
@@ -92,10 +92,10 @@ export class FirebaseService {
             Long: curPos.longitude
         }
 
-        console.log("Your Location, " + location);
+        //console.log("Your Location, " + location);
 
         FirebaseService.newLocList.push(location);
 
-        console.log(FirebaseService.newLocList.length);
+        //console.log(FirebaseService.newLocList.length);
     }
 }
