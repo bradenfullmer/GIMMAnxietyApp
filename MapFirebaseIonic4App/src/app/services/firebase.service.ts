@@ -43,7 +43,7 @@ export class FirebaseService {
                     console.log("Value matched: " + this.getBuildingCode());
                     this.setBuildingLocation(item);
                     console.log(this.getBuildingLocation());
-                    FirebaseService.newLocList.length = 0;
+                    FirebaseService.newLocList = new Array<Location>();
                     FirebaseService.newLocList.push(item);
                 }
                 else {
@@ -92,10 +92,10 @@ export class FirebaseService {
             Long: curPos.longitude
         }
 
-        console.log(FirebaseService.newLocList.length);
+        //console.log(FirebaseService.newLocList.length);
 
         FirebaseService.newLocList.push(location);
 
-        console.log(FirebaseService.newLocList.length);
+        //console.log(FirebaseService.newLocList.length);
     }
 }
