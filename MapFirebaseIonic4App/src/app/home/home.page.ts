@@ -36,7 +36,7 @@ public Buildings: string;
 
         this.locationsList = FirebaseService.getStaticLocation();
         console.log("THE " + this.locationsList);
-        this.location = this.locationsList.BuildingName.valueOf();
+        //this.location = this.locationsList.BuildingName.valueOf();
 
         let mapOptions = {
           zoom: 10,
