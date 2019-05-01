@@ -16,7 +16,7 @@ declare var google;
 export class HomePage implements OnInit {
 @ViewChild('map') mapElement: ElementRef;
 public base64Image: string;
-    locationsList: Array<string>;
+    locationsList: Array<string> = new Array<string>();
     location: string;
 map: any;
 position: any;
