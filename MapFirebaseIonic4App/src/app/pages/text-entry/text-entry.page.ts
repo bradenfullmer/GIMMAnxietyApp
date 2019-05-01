@@ -19,13 +19,29 @@ export class TextEntryPage implements OnInit {
 
     }
     loadMapPage() {
-        this.firebaseService.setBuildingCode(this.bCode);
         //this.firebaseService.checkBuilding();
-        if (FirebaseService.getStaticLocation) {
-            this.router.navigate(['../home']);
-        } else {
-            console.log("Location issues... again");
-        }
+        
 
+        (async () => {
+            // Do something before delay
+            console.log('before delay');
+
+            this.firebaseService.setBuildingCode(this.bCode);
+
+            await this.delay(1000);
+
+            // Do something after
+            console.log('after delay');
+
+            if (FirebaseService.getStaticLocation()) {
+                this.router.navigate(['../home']);
+            } else {
+                console.log("Location issues... again");
+            }
+        })();
+    }
+
+    delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
