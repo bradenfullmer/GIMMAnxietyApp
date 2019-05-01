@@ -29,7 +29,7 @@ public Buildings: string;
   public firebaseService: FirebaseService) {
       this.locationsList = FirebaseService.getStaticLocation();
       console.log(this.locationsList);
-      this.location = this.locationsList.BuildingName.valueOf();
+      this.location = this.locationsList.BuildingName;
   }
 
     ngOnInit() {
