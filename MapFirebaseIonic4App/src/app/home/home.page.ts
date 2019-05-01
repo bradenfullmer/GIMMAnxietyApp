@@ -16,7 +16,8 @@ declare var google;
 export class HomePage implements OnInit {
 @ViewChild('map') mapElement: ElementRef;
 public base64Image: string;
-locationsList: Location;
+    locationsList: Location;
+    location: string;
 map: any;
 position: any;
 locationKey: any;
@@ -27,6 +28,7 @@ public Buildings: string;
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
       this.locationsList = this.firebaseService.getBuildingLocation();
+      this.location = this.locationsList.BuildingName;
   }
 
   ngOnInit() {
