@@ -15,6 +15,8 @@ export class FirebaseService {
     public currentLocation: Location;
     public buildingLocation: Location;
 
+    private static newLocList: Array<Location>;
+
     public static staticBuilding: Location;
 
     public buildingCode: string;
@@ -33,12 +35,15 @@ export class FirebaseService {
     checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
+        
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
                 if (item.Key == this.getBuildingCode()) {
                     console.log("Value matched: " + this.getBuildingCode());
                     this.setBuildingLocation(item);
                     console.log(this.getBuildingLocation());
+                    this.newLocList.length = 0;
+                    this.newLocList.push(item);
                 }
                 else {
                     //console.log("NOT A MATCH: " + item.Key);
@@ -72,5 +77,18 @@ export class FirebaseService {
   }
   getLocationsList(){
     return this.locationListRef;
+    }
+
+    public static getPosList() {
+        return FirebaseService.newLocList;
+    }
+
+    addCurrentLoc(curPos) {
+        this.currentLocation.Key = "QWERTY";
+        this.currentLocation.BuildingName = "Your Location";
+        this.currentLocation.Lat = curPos.latitude;
+        this.currentLocation.Long = curPos.longitude;
+
+        FirebaseService.newLocList.push(this.currentLocation);
     }
 }

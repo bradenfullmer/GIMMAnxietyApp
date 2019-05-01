@@ -46,14 +46,12 @@ public Buildings: string;
           fullScreenControl: false
         }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-    //this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
-    //  for (let item of res) {
-        this.addMarker(this.locationsList);
-        this.position = new google.maps.LatLng(this.locationsList.Lat, this.locationsList.Long);
+        
+      for (let item of FirebaseService.getPosList()) {
+        this.addMarker(item);
+        this.position = new google.maps.LatLng(item.Lat, item.Long);
         this.map.setCenter(this.position);
-    //  }
-    //});
+      }
   }
   //onContextChange(ctxt: string): void {
   //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
