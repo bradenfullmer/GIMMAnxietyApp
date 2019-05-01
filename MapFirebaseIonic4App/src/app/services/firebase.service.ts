@@ -12,23 +12,25 @@ import { Observable } from 'rxjs-compat/Observable';
   providedIn: 'root'
 })
 export class FirebaseService {
-    private locationListRef = this.db.list<Location>('Buildings');
+    private static locationListRef;
+    locationListReg = this.db.list<Location>('Buildings');
     public currentLocation: Location;
-    public buildingLocation: Location;
+    public static buildingLocation: Location;
 
-    public buildingCode: string;
+    public static buildingCode: string;
 
-    setBuildingCode(bCode: string) {
+    static setBuildingCode(bCode: string) {
         bCode = bCode.replace(/[0-9]/g, '');
+        bCode = bCode.replace(' ', '');
         bCode = bCode.toUpperCase();
         console.log(bCode);
         this.buildingCode = bCode;
     }
-    getBuildingCode() {
+    static getBuildingCode() {
         return this.buildingCode;
     }
 
-    checkBuilding() {
+    static checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
         this.getLocationsList().valueChanges().subscribe(res => {
@@ -46,10 +48,10 @@ export class FirebaseService {
             }
         });
     }
-    setBuildingLocation(loc: Location) {
+    static setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
     }
-    getBuildingLocation() {
+    static getBuildingLocation() {
         return this.buildingLocation;
     }
 
@@ -60,7 +62,7 @@ export class FirebaseService {
   getCurrentLocation(){
     return this.currentLocation;
   }
-  getLocationsList(){
+  static getLocationsList(){
     return this.locationListRef;
     }
 }
