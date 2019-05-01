@@ -37,7 +37,6 @@ export class TextEntryPage implements OnInit {
             } else {
                 console.log("Location issues... again");
             }
-
         })();
     }
 

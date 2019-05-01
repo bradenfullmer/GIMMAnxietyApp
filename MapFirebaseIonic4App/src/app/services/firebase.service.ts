@@ -85,13 +85,15 @@ export class FirebaseService {
     }
 
     addCurrentLoc(curPos) {
-        //this.currentLocation.Key = "QWERTY";
-        this.currentLocation.BuildingName = "Your Location";
-        this.currentLocation.Lat = curPos.latitude;
-        this.currentLocation.Long = curPos.longitude;
+        var location: Location = {
+            Key: '',
+            BuildingName: 'You are Here',
+            Lat: curPos.latitude,
+            Long: curPos.longitude
+        }
 
-        console.log(this.currentLocation);
+        console.log(location);
 
-        FirebaseService.newLocList.push(this.currentLocation);
+        FirebaseService.newLocList.push(location);
     }
 }
