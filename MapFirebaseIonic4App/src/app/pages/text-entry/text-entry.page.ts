@@ -20,15 +20,12 @@ export class TextEntryPage implements OnInit {
     }
     loadMapPage() {
         //this.firebaseService.checkBuilding();
-
+        this.firebaseService.setBuildingCode(this.bCode);
+        this.firebaseService.checkBuilding();
 
         (async () => {
             // Do something before delay
             console.log('before delay');
-
-            this.firebaseService.setBuildingCode(this.bCode);
-            this.firebaseService.checkBuilding();
-
             await this.delay(1000);
 
             // Do something after
