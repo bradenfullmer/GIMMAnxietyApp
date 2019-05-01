@@ -21,6 +21,11 @@ export class TextEntryPage implements OnInit {
     loadMapPage() {
         this.firebaseService.setBuildingCode(this.bCode);
         //this.firebaseService.checkBuilding();
+        if (FirebaseService.getStaticLocation) {
+            this.router.navigate(['../home']);
+        } else {
+            console.log("Location issues... again");
+        }
 
     }
 }
