@@ -27,7 +27,7 @@ public Buildings: string;
 
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
-      this.locationsList = this.firebaseService.getBuildingLocation();
+      this.locationsList = FirebaseService.getStaticLocation();
       this.location = this.locationsList.BuildingName;
   }
 

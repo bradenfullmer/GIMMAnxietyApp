@@ -16,6 +16,8 @@ export class FirebaseService {
     public currentLocation: Location;
     public buildingLocation: Location;
 
+    public static staticBuilding;
+
     public buildingCode: string;
 
     setBuildingCode(bCode: string) {
@@ -50,9 +52,15 @@ export class FirebaseService {
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
+        FirebaseService.staticBuilding = loc;
     }
+
     getBuildingLocation() {
         return this.buildingLocation;
+    }
+
+    getStaticLocation() {
+        return FirebaseService.staticBuilding;
     }
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
