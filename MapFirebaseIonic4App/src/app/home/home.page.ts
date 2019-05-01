@@ -45,7 +45,9 @@ public Buildings: string;
           streetViewControl: false,
           fullScreenControl: false
         }
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+        this.firebaseService.checkBuilding();
         
         for (let item of FirebaseService.getPosList()) {
             console.log(item.BuildingName);

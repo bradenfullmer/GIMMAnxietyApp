@@ -21,7 +21,7 @@ export class TextEntryPage implements OnInit {
     loadMapPage() {
         //this.firebaseService.checkBuilding();
         this.firebaseService.setBuildingCode(this.bCode);
-        this.firebaseService.checkBuilding();
+        //this.firebaseService.checkBuilding();
         this.firebaseService.addCurrentLoc(this.geolocation.getCurrentPosition());
 
         (async () => {

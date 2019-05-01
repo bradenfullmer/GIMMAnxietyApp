@@ -19,17 +19,17 @@ export class FirebaseService {
 
     public static staticBuilding: Location;
 
-    public buildingCode: string;
+    public static buildingCode: string;
 
     setBuildingCode(bCode: string) {
         bCode = bCode.replace(/[0-9]/g, '');
         bCode = bCode.replace(' ', '');
         bCode = bCode.toUpperCase();
         console.log(bCode);
-        this.buildingCode = bCode;
+        FirebaseService.buildingCode = bCode;
     }
     getBuildingCode() {
-        return this.buildingCode;
+        return FirebaseService.buildingCode;
     }
 
     checkBuilding() {
