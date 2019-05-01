@@ -21,7 +21,7 @@ export class TextEntryPage implements OnInit {
     loadMapPage() {
         this.firebaseService.setBuildingCode(this.bCode);
         //this.firebaseService.checkBuilding();
-        setTimeout(() => this.router.navigate(['../home']), 500);
+        this.router.navigate(['../home']);
 
     }
 }
