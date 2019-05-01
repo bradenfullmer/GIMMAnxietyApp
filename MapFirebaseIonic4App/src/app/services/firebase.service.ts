@@ -35,7 +35,7 @@ export class FirebaseService {
     checkBuilding() {
         console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
-        
+
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
               console.log("hello");
@@ -96,6 +96,6 @@ export class FirebaseService {
 
         FirebaseService.newLocList.push(location);
 
-        //console.log(FirebaseService.newLocList.length);
+        console.log(FirebaseService.newLocList.length);
     }
 }
