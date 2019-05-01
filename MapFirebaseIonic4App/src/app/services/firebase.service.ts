@@ -7,11 +7,6 @@ import 'firebase/storage';
 import 'rxjs-compat/add/operator/map';
 import { Observable } from 'rxjs-compat/Observable';
 
-
-
-import { Router } from '@angular/router';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -36,10 +31,6 @@ export class FirebaseService {
         return this.buildingCode;
     }
 
-    private goToMap() {
-        this.router.navigate(['/home']);
-    }
-
     checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
@@ -58,7 +49,6 @@ export class FirebaseService {
                 //this.map.setCenter(this.position);
             }
         });
-        this.goToMap();
     }
     setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
@@ -73,7 +63,7 @@ export class FirebaseService {
         return FirebaseService.staticBuilding;
     }
 
-    constructor(private router: Router, private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+    constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
   setCurrentLocation(location: Location){
     this.currentLocation = location;
   }
