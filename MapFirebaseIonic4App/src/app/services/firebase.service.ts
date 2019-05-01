@@ -16,7 +16,7 @@ export class FirebaseService {
     public currentLocation: Location;
     public buildingLocation: Location;
 
-    public static staticBuilding;
+    public static staticBuilding: Location;
 
     public buildingCode: string;
 
@@ -26,6 +26,7 @@ export class FirebaseService {
         bCode = bCode.toUpperCase();
         console.log(bCode);
         this.buildingCode = bCode;
+        this.checkBuilding();
     }
     getBuildingCode() {
         return this.buildingCode;

@@ -28,6 +28,8 @@ public Buildings: string;
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
       this.locationsList = FirebaseService.getStaticLocation();
+      console.log(this.locationsList);
+      this.location = this.locationsList.BuildingName.valueOf();
   }
 
   ngOnInit() {
