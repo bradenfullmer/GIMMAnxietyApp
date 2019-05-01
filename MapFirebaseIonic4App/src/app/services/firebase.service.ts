@@ -16,7 +16,7 @@ export class FirebaseService {
     public currentLocation: Location;
     public buildingLocation: Location;
 
-    public static staticBuilding;
+    public static staticBuilding: Location;
 
     public buildingCode: string;
 
