@@ -12,28 +12,27 @@ import { Observable } from 'rxjs-compat/Observable';
   providedIn: 'root'
 })
 export class FirebaseService {
-    private static locationListRef;
-    locationListReg = this.db.list<Location>('Buildings');
+    private locationListRef = this.db.list<Location>('Buildings');
     public currentLocation: Location;
-    public static buildingLocation: Location;
+    public buildingLocation: Location;
 
-    public static buildingCode: string;
+    public buildingCode: string;
 
-    static setBuildingCode(bCode: string) {
+    setBuildingCode(bCode: string) {
         bCode = bCode.replace(/[0-9]/g, '');
         bCode = bCode.replace(' ', '');
         bCode = bCode.toUpperCase();
         console.log(bCode);
         this.buildingCode = bCode;
     }
-    static getBuildingCode() {
+    getBuildingCode() {
         return this.buildingCode;
     }
 
-    static checkBuilding() {
+    checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
-        FirebaseService.getLocationsList().valueChanges().subscribe(res => {
+        this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
                 if (item.Key == this.getBuildingCode()) {
                     console.log("Value matched: " + this.getBuildingCode());
@@ -49,10 +48,10 @@ export class FirebaseService {
             }
         });
     }
-    static setBuildingLocation(loc: Location) {
+    setBuildingLocation(loc: Location) {
         this.buildingLocation = loc;
     }
-    static getBuildingLocation() {
+    getBuildingLocation() {
         return this.buildingLocation;
     }
 
@@ -63,7 +62,7 @@ export class FirebaseService {
   getCurrentLocation(){
     return this.currentLocation;
   }
-  static getLocationsList(){
+  getLocationsList(){
     return this.locationListRef;
     }
 }

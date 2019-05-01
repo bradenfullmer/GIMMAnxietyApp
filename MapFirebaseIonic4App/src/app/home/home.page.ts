@@ -27,7 +27,7 @@ public Buildings: string;
 
   constructor(private router: Router, private geolocation: Geolocation,
   public firebaseService: FirebaseService) {
-      this.locationsList = FirebaseService.getBuildingLocation();
+      this.locationsList = this.firebaseService.getBuildingLocation();
       this.location = this.locationsList.BuildingName;
   }
 
@@ -41,7 +41,7 @@ public Buildings: string;
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-    FirebaseService.getLocationsList().valueChanges().subscribe(res => {
+    this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
       for (let item of res) {
         this.addMarker(item);
         this.position = new google.maps.LatLng(item.Lat, item.Long);
