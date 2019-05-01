@@ -32,23 +32,28 @@ public Buildings: string;
       this.location = this.locationsList.BuildingName.valueOf();
   }
 
-  ngOnInit() {
-    let mapOptions = {
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullScreenControl: false
-    }
+    ngOnInit() {
+
+        this.locationsList = FirebaseService.getStaticLocation();
+        console.log(this.locationsList);
+        this.location = this.locationsList.BuildingName.valueOf();
+
+        let mapOptions = {
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false,
+          streetViewControl: false,
+          fullScreenControl: false
+        }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-    this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
-      for (let item of res) {
-        this.addMarker(item);
-        this.position = new google.maps.LatLng(item.Lat, item.Long);
+    //this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
+    //  for (let item of res) {
+        this.addMarker(this.locationsList);
+        this.position = new google.maps.LatLng(this.locationsList.Lat, this.locationsList.Long);
         this.map.setCenter(this.position);
-      }
-    });
+    //  }
+    //});
   }
   //onContextChange(ctxt: string): void {
   //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
