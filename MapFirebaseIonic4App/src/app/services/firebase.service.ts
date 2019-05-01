@@ -43,8 +43,8 @@ export class FirebaseService {
                     console.log("Value matched: " + this.getBuildingCode());
                     this.setBuildingLocation(item);
                     console.log(this.getBuildingLocation());
-                    this.newLocList.length = 0;
-                    this.newLocList.push(item);
+                    FirebaseService.newLocList.length = 0;
+                    FirebaseService.newLocList.push(item);
                 }
                 else {
                     //console.log("NOT A MATCH: " + item.Key);
@@ -85,10 +85,12 @@ export class FirebaseService {
     }
 
     addCurrentLoc(curPos) {
-        this.currentLocation.Key = "QWERTY";
+        //this.currentLocation.Key = "QWERTY";
         this.currentLocation.BuildingName = "Your Location";
         this.currentLocation.Lat = curPos.latitude;
         this.currentLocation.Long = curPos.longitude;
+
+        console.log(this.currentLocation);
 
         FirebaseService.newLocList.push(this.currentLocation);
     }
