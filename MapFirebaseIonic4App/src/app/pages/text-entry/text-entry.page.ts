@@ -27,6 +27,7 @@ export class TextEntryPage implements OnInit {
             console.log('before delay');
 
             this.firebaseService.setBuildingCode(this.bCode);
+            this.firebaseService.checkBuilding();
 
             await this.delay(1000);
 

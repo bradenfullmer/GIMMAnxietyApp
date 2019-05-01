@@ -25,7 +25,6 @@ export class FirebaseService {
         bCode = bCode.toUpperCase();
         console.log(bCode);
         this.buildingCode = bCode;
-        this.checkBuilding();
     }
     getBuildingCode() {
         return this.buildingCode;
