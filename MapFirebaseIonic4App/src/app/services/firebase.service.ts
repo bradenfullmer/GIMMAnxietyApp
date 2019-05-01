@@ -37,7 +37,7 @@ export class FirebaseService {
     }
 
     private goToMap() {
-        this.router.navigate(['/home']);
+        this.router.navigate(['../home']);
     }
 
     checkBuilding() {
