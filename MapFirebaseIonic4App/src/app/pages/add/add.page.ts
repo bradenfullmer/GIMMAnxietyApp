@@ -13,6 +13,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class AddPage implements OnInit {
   public base64Image: string;
   location: Location = {
+    Key:'',
     BuildingName: '',
     Lat: 0,
     Long: 0
@@ -28,9 +29,6 @@ export class AddPage implements OnInit {
       console.log('Error getting location', error);
     });
   }
-addLocation(location: Location){
-  this.firebaseService.addLocation(location);
-}
 
 
 

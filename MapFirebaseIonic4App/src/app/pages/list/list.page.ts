@@ -23,13 +23,6 @@ export class ListPage implements OnInit {
   ngOnInit() {
     console.log("Got: " + this.activatedRoute.snapshot.paramMap.get('locationTitle'));
   }
-
-  editLocation(location: Location) {
-    this.firebaseService.editLocation(location);
-  }
-  deleteLocation(location: Location) {
-    this.firebaseService.deleteLocation(location);
-  }
   openCamera(){
       const options: CameraOptions = {
         quality: 100,
