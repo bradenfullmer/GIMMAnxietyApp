@@ -31,7 +31,7 @@ export class TextEntryPage implements OnInit {
             console.log('Error getting location', error);
             });
 
-        this.firebaseService.addCurrentLoc(tLocLat, tLocLong);
+        //this.firebaseService.addCurrentLoc(tLocLat, tLocLong);
         //if (FirebaseService.getStaticLocation()) {
         //    this.router.navigate(['../home']);
         //} else {
