@@ -36,7 +36,7 @@ export class FirebaseService {
         console.log(this.getBuildingCode() + " " + this.locationListRef);
         FirebaseService.newLocList = new Array<Location>();
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
-        
+
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
               console.log("hello");
