@@ -92,7 +92,7 @@ export class FirebaseService {
             Long: curPos.longitude
         }
 
-        console.log(location);
+        console.log("Your Location, " + location);
 
         FirebaseService.newLocList.push(location);
 

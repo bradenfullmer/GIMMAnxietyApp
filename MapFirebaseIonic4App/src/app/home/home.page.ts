@@ -34,8 +34,8 @@ public Buildings: string;
 
     ngOnInit() {
 
-        this.locationsList = FirebaseService.staticBuilding;
-        console.log("THE " + this.locationsList);
+        //this.locationsList = FirebaseService.staticBuilding;
+        //console.log("THE " + this.locationsList);
         //this.location = this.locationsList.BuildingName.valueOf();
 
         let mapOptions = {
