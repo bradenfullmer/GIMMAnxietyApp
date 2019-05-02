@@ -21,7 +21,7 @@ public base64Image: string;
 map: any;
 position: any;
 locationKey: any;
-currentLoc: any;
+currentLoc: Location;
 public Buildings: string;
 
 
@@ -30,6 +30,12 @@ public Buildings: string;
       //this.locationsList = FirebaseService.getStaticLocation();
       //console.log(this.locationsList);
       //this.location = this.locationsList.BuildingName;
+      this.geolocation.getCurrentPosition().then(pos => {
+      this.currentLoc.Lat = pos.coords.latitude;
+      this.currentLoc.Long = pos.coords.longitude;
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
     ngOnInit() {
@@ -49,7 +55,7 @@ public Buildings: string;
 
         this.firebaseService.checkBuilding();
         console.log(FirebaseService.getPosList());
-        
+
         for (let item of FirebaseService.getPosList()) {
             console.log(item.BuildingName);
             this.addMarker(item);

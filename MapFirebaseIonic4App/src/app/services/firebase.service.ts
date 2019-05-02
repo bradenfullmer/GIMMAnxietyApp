@@ -100,8 +100,8 @@ export class FirebaseService {
 
         //console.log("Your Location, " + location);
 
-        FirebaseService.newLocList.push(location);
-
+        //FirebaseService.newLocList.push(location);
+        //this.newLocList.push(location);
         //console.log(FirebaseService.newLocList.length);
     }
 }
