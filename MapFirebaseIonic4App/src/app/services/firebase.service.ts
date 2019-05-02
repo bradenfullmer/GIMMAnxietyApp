@@ -24,6 +24,7 @@ export class FirebaseService {
     setBuildingCode(bCode: string) {
         bCode = bCode.replace(/[0-9]/g, '');
         bCode = bCode.replace(' ', '');
+        bCode = bCode.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
         bCode = bCode.toUpperCase();
         console.log(bCode);
         FirebaseService.buildingCode = bCode;
