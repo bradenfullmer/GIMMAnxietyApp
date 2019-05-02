@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class = "new-header-color">
-    <ion-title class = "new-text-color" style="font:.9rem;">
+    <ion-title class = "new-text-color" style="font:.9rem;" *ngFor="let location of locationsList$ | async"> 
       {{locationList}}
     </ion-title>
     <ion-buttons slot="start" class = "new-text-color">
@@ -10,12 +10,24 @@
 </ion-header>
 
 <ion-content>
-  <div #map id="map"></div>
+<div>
   <ion-list>
-      <ion-list-header style="font:1.1rem underline; padding: 1rem 0 0 1rem;">
-          <u>Your class is at:</u>
-      </ion-list-header>
-      <ion-label color="dark" Style="font:1.1rem; text-align: center; padding-top: 1rem" *ngFor="let location of locationsList$ | async">{{locationList}}</ion-label>
-
+    <ion-list-header style="font:1.1rem underline; padding: 1rem 0 0 1rem;">
+      <u>Your class is at:</u>
+    </ion-list-header>
+    <ion-label color="dark" Style="font:1.1rem; text-align: center; padding-top: 1rem" *ngFor="let location of locationsList$ | async">{{locationList}}</ion-label>
   </ion-list>
+</div>
+<div #map id="map"></div>
+<div>
+    <ion-list>
+      <ion-list-header style="font:1.1rem underline; padding: 1rem 0 0 1rem;">
+        <u>Follow the Blue Line:</u>
+      </ion-list-header>
+      <ion-label color="dark" Style="font:1.1rem; text-align: center; padding-top: 1rem" >
+        <p>The red marker is your target and the blue marker is you. Follow the line and if your class is on the a 2XX, 3XX, or 4XX room the class will be on the 2nd, 3rd, or 4th floor.</p>
+        <p>Most classrooms are going to be in numerical order.</p>
+      </ion-label>
+    </ion-list>
+  </div>
 </ion-content>
