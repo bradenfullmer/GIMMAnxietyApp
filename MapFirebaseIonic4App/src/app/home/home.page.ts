@@ -22,7 +22,8 @@ export class HomePage implements OnInit {
   position: any;
   locationKey: any;
   public Buildings: string;
-  start: any;
+    startLat: any;
+    startLong: any;
   end: any;
   directionsService: any;
     directionsDisplay: any;
@@ -51,7 +52,8 @@ export class HomePage implements OnInit {
 
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        this.start = pos;
+        this.startLat = pos.coords.latitude;
+        this.startLong = pos.coords.longitude;
         this.YMarker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
@@ -83,7 +85,7 @@ export class HomePage implements OnInit {
     calculateAndDisplayRoute() {
         console.log("in route calc...");
         this.directionsService.route({
-            origin: new google.maps.LatLng(this.start.coords.latitude, this.start.coords.longitude),
+            origin: new google.maps.LatLng(this.startLat, this.startLong),
             destination: new google.maps.LatLng(this.end.Lat, this.end.Long),
             travelMode: 'WALKING'
         }, (response, status) => {
