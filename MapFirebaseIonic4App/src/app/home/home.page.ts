@@ -74,7 +74,7 @@ export class HomePage implements OnInit {
     for (let item of FirebaseService.getPosList()) {
       console.log(item.BuildingName);
       this.addMarker(item);
-      this.locationsList.push(item.BuildingName);
+      this.location = item.BuildingName;
       this.position = new google.maps.LatLng(item.Lat, item.Long);
       this.map.setCenter(this.position);
       //console.log("here");
@@ -82,7 +82,6 @@ export class HomePage implements OnInit {
       this.calculateAndDisplayRoute();
 
       FirebaseService.resetList();
-      this.clearMarkers();
     }
 
     calculateAndDisplayRoute() {
