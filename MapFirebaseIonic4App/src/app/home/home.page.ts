@@ -85,7 +85,7 @@ export class HomePage implements OnInit {
     console.log("Assigned location key: " + this.locationKey);
   }
   addInfoWindow(marker, location) {
-    let contentString = 
+    let contentString =
       '<div class="info-window" id="clickableItem" >' +
         '<h3>' + '</h3>' +
         '<div class="info-content">' +
