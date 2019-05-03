@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
 
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        this.start = latLng;
+        this.start = pos;
         this.YMarker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
@@ -83,8 +83,8 @@ export class HomePage implements OnInit {
     calculateAndDisplayRoute() {
         console.log("in route calc...");
         this.directionsService.route({
-            origin: this.start,
-            destination: this.end,
+            origin: new google.maps.LatLng(this.start.coords.latitude, this.start.coords.longitude),
+            destination: new google.maps.LatLng(this.end.Lat, this.end.Long),
             travelMode: 'WALKING'
         }, (response, status) => {
             if (status === 'OK') {
@@ -120,7 +120,7 @@ export class HomePage implements OnInit {
       }
     });
       
-      this.end = latLng;
+      this.end = location;
       
     this.addInfoWindow(this.BMarker, location);
   }
