@@ -25,19 +25,24 @@ export class HomePage implements OnInit {
   start: any;
   end: any;
   directionsService: any;
-  directionsDisplay: any;
+    directionsDisplay: any;
+    BMarker: any = new google.maps.Marker();
+    YMarker: any = new google.maps.Marker();
 
   constructor(private router: Router, private geolocation: Geolocation, public firebaseService: FirebaseService) { }
 
+    mapOptions: any = {
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullScreenControl: false
+    };
+
   ngOnInit() {
-    let mapOptions = {
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullScreenControl: false
-    }
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      //this.storedMapOptions = mapOptions;
+      this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
+      this.clearMarkers();
       this.directionsService = new google.maps.DirectionsService;
       this.directionsDisplay = new google.maps.DirectionsRenderer;
       this.directionsDisplay.setMap(this.map);
@@ -45,7 +50,7 @@ export class HomePage implements OnInit {
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         this.start = latLng;
-      let marker = new google.maps.Marker({
+        this.YMarker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: latLng,
@@ -82,7 +87,7 @@ export class HomePage implements OnInit {
             if (status === 'OK') {
                 this.directionsDisplay.setDirections(response);
             } else {
-                window.alert('Directions request failed due to ' + status);
+                console.log('Directions request failed due to ' + status);
             }
         });
     }
@@ -93,9 +98,16 @@ export class HomePage implements OnInit {
   //  }));
   //});
   //}
+
+    public clearMarkers() {
+        this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
+        this.BMarker.setMap(null);
+        this.YMarker.setMap(null);
+    }
+
   addMarker(location: any) {
     let latLng = new google.maps.LatLng(location.Lat, location.Long);
-    let marker = new google.maps.Marker({
+    this.BMarker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng,
