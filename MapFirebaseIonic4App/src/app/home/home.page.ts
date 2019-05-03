@@ -22,6 +22,10 @@ export class HomePage implements OnInit {
   position: any;
   locationKey: any;
   public Buildings: string;
+  start: any;
+  end: any;
+  directionsService: any;
+  directionsDisplay: any;
 
   constructor(private router: Router, private geolocation: Geolocation, public firebaseService: FirebaseService) { }
 
@@ -33,10 +37,14 @@ export class HomePage implements OnInit {
       streetViewControl: false,
       fullScreenControl: false
     }
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.directionsService = new google.maps.DirectionsService;
+      this.directionsDisplay = new google.maps.DirectionsRenderer;
+
 
     this.geolocation.getCurrentPosition().then(pos => {
-      let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        this.start = latLng;
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
@@ -60,9 +68,24 @@ export class HomePage implements OnInit {
       this.map.setCenter(this.position);
       //console.log("here");
       }
+      this.calculateAndDisplayRoute();
 
       FirebaseService.resetList();
-  }
+    }
+
+    calculateAndDisplayRoute() {
+        this.directionsService.route({
+            origin: this.start,
+            destination: this.end,
+            travelMode: 'WALKING'
+        }, (response, status) => {
+            if (status === 'OK') {
+                this.directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
   //onContextChange(ctxt: string): void {
   //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
   //  return changes.map( c=> ({
@@ -78,7 +101,9 @@ export class HomePage implements OnInit {
       position: latLng
     });
 
-    //this.addInfoWindow(marker, location);
+      this.end = latLng;
+
+    this.addInfoWindow(marker, location);
   }
   assignLocation(loc: Location) {
     this.firebaseService.setCurrentLocation(loc);
