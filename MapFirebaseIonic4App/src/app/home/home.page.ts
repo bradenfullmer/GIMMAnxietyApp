@@ -85,6 +85,7 @@ export class HomePage implements OnInit {
 
     calculateAndDisplayRoute() {
         console.log("in route calc...");
+        console.log("Start: " + this.startLat + ", " + this.startLong + "  End: " + this.endLat + ", " + this.endLong);
         this.directionsService.route({
             origin: new google.maps.LatLng(this.startLat, this.startLong),
             destination: new google.maps.LatLng(this.endLat, this.endLong),
