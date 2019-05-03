@@ -58,7 +58,7 @@ export class HomePage implements OnInit {
       this.locationsList.push(item.BuildingName);
       this.position = new google.maps.LatLng(item.Lat, item.Long);
       this.map.setCenter(this.position);
-      console.log("here");
+      //console.log("here");
     }
   }
   //onContextChange(ctxt: string): void {
@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
       position: latLng
     });
 
-    this.addInfoWindow(marker, location);
+    //this.addInfoWindow(marker, location);
   }
   assignLocation(loc: Location) {
     this.firebaseService.setCurrentLocation(loc);
@@ -88,7 +88,6 @@ export class HomePage implements OnInit {
       '<div class="info-window" id="clickableItem" >' +
         '<h3>' + '</h3>' +
         '<div class="info-content">' +
-          '<img src="' + '" style="width:30px;height:30px;border-radius: 50%; padding: 20px, 20px, 20px, 20px;"/>' +
           '<p>' + location.BuildingName + '</p>' +
         '</div>' +
       '</div>';
@@ -101,7 +100,7 @@ export class HomePage implements OnInit {
     google.maps.event.addListener(infoWindow, 'domready', () => {
       var clickableItem = document.getElementById('clickableItem');
       clickableItem.addEventListener('click', () => {
-        console.log("clicked on marker");
+        //console.log("clicked on marker");
         this.firebaseService.setCurrentLocation(location);
         this.Buildings = location.BuildingName;
         this.router.navigate(['/list', this.Buildings]);
