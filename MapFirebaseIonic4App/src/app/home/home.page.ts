@@ -53,9 +53,9 @@ export class HomePage implements OnInit {
 
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        console.log(latLng);
-        this.startLat = pos.coords.latitude;
-        this.startLong = pos.coords.longitude;
+        console.log(pos.coords.latitude + " " + pos.coords.longitude);
+        this.startLat = pos.coords.latitude.toString();
+        this.startLong = pos.coords.longitude.toString();
         this.YMarker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
