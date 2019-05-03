@@ -59,7 +59,9 @@ export class HomePage implements OnInit {
       this.position = new google.maps.LatLng(item.Lat, item.Long);
       this.map.setCenter(this.position);
       //console.log("here");
-    }
+      }
+
+      FirebaseService.resetList();
   }
   //onContextChange(ctxt: string): void {
   //this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {

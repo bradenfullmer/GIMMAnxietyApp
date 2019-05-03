@@ -32,6 +32,9 @@ export class FirebaseService {
     getBuildingCode() {
         return FirebaseService.buildingCode;
     }
+    public static resetList() {
+        FirebaseService.newLocList.splice(0, FirebaseService.newLocList.length - 1);
+    }
 
     checkBuilding() {
         //console.log(this.getBuildingCode() + " " + this.locationListRef);
