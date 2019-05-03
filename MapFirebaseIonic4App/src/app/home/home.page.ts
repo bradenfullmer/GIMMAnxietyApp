@@ -40,7 +40,7 @@ export class HomePage implements OnInit {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.directionsService = new google.maps.DirectionsService;
       this.directionsDisplay = new google.maps.DirectionsRenderer;
-
+      this.directionsDisplay.setMap(this.map);
 
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
