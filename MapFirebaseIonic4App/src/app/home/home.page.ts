@@ -47,6 +47,8 @@ export class HomePage implements OnInit {
       this.directionsDisplay = new google.maps.DirectionsRenderer;
       this.directionsDisplay.setMap(this.map);
 
+      this.clearMarkers();
+
     this.geolocation.getCurrentPosition().then(pos => {
         let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
         this.start = latLng;
@@ -79,12 +81,14 @@ export class HomePage implements OnInit {
     }
 
     calculateAndDisplayRoute() {
+        console.log("in route calc...");
         this.directionsService.route({
             origin: this.start,
             destination: this.end,
             travelMode: 'WALKING'
         }, (response, status) => {
             if (status === 'OK') {
+                console.log("Should be showing");
                 this.directionsDisplay.setDirections(response);
             } else {
                 console.log('Directions request failed due to ' + status);
