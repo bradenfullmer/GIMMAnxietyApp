@@ -118,7 +118,7 @@ export class HomePage implements OnInit {
       
       this.end = latLng;
       
-    this.addInfoWindow(marker, location);
+    this.addInfoWindow(this.BMarker, location);
   }
   assignLocation(loc: Location) {
     this.firebaseService.setCurrentLocation(loc);
