@@ -82,6 +82,7 @@ export class HomePage implements OnInit {
       this.calculateAndDisplayRoute();
 
       FirebaseService.resetList();
+      this.clearMarkers();
     }
 
     calculateAndDisplayRoute() {
