@@ -24,7 +24,8 @@ export class HomePage implements OnInit {
   public Buildings: string;
     startLat: any;
     startLong: any;
-  end: any;
+    endLat: any;
+    endLong: any;
   directionsService: any;
     directionsDisplay: any;
     BMarker: any = new google.maps.Marker();
@@ -122,7 +123,8 @@ export class HomePage implements OnInit {
       }
     });
       
-      this.end = location;
+      this.endLat = location.Lat;
+      this.endLong = location.Long;
       
     this.addInfoWindow(this.BMarker, location);
   }
