@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class = "new-header-color">
-    <ion-title class = "new-text-color" style="font:.9rem;" *ngFor="let location of locationsList$ | async"> 
+    <ion-title class = "new-text-color" style="font:.9rem;"> 
       Map
     </ion-title>
     <ion-buttons slot="start" class = "new-text-color">
@@ -24,10 +24,11 @@
       <ion-list-header style="font:1.1rem underline; padding: 1rem 0 0 1rem;">
         <u>Follow the target marker:</u>
       </ion-list-header>
-      <ion-label color="dark" Style="font:1.1rem; text-align: center; padding-top: 1rem" >
-        <p>The red marker is your target and the blue marker is you. Follow the line and if your class is on the a 2XX, 3XX, or 4XX room the class will be on the 2nd, 3rd, or 4th floor.</p>
-        <p>Most classrooms are going to be in numerical order.</p>
+      <div  Style="font:1.1rem; padding: .5rem 1rem 0 1rem;">
+      <ion-label color="dark">
+        <p>The orange marker is your target and the blue marker is you. Follow the roads to your the building. If your class is in a 2XX, 3XX, or 4XX room the class will be on the 2nd, 3rd, or 4th floor. Most classrooms are going to be in numerical order.</p>
       </ion-label>
+    </div>
     </ion-list>
   </div>
 </ion-content>
