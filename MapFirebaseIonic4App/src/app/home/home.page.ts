@@ -87,7 +87,7 @@ export class HomePage implements OnInit {
         console.log("in route calc...");
         this.directionsService.route({
             origin: new google.maps.LatLng(this.startLat, this.startLong),
-            destination: new google.maps.LatLng(this.end.Lat, this.end.Long),
+            destination: new google.maps.LatLng(this.endLat, this.endLong),
             travelMode: 'WALKING'
         }, (response, status) => {
             if (status === 'OK') {
