@@ -41,6 +41,7 @@ export class FirebaseService {
         //FirebaseService.newLocList = new Array<Location>();
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
         var matched = false;
+        FirebaseService.resetList();
 
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
