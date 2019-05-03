@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
         animation: google.maps.Animation.DROP,
         position: latLng,
         icon: {
-          url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png'
+          url: 'http://maps.google.com/mapfiles/kml/paddle/blu-circle.png'
       }
       });
     }).catch((error) => {
@@ -75,10 +75,13 @@ export class HomePage implements OnInit {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: latLng
+      position: latLng,
+      icon: {
+        url: 'http://maps.google.com/mapfiles/kml/paddle/orange-square.png'
+      }
     });
 
-    //this.addInfoWindow(marker, location);
+    this.addInfoWindow(marker, location);
   }
   assignLocation(loc: Location) {
     this.firebaseService.setCurrentLocation(loc);
