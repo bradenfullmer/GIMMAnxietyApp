@@ -27,7 +27,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     let mapOptions = {
-      zoom: 10,
+      zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       streetViewControl: false,
@@ -42,7 +42,8 @@ export class HomePage implements OnInit {
         animation: google.maps.Animation.DROP,
         position: latLng,
         icon: {
-          url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png'
+          //url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png'
+          url: 'https://www.clipartmax.com/png/small/69-693540_map-pin-blue-clip-art-at-clker-google-maps-icon-blue.png'
       }
       });
     }).catch((error) => {

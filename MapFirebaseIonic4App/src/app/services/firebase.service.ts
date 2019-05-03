@@ -34,14 +34,14 @@ export class FirebaseService {
     }
 
     checkBuilding() {
-        console.log(this.getBuildingCode() + " " + this.locationListRef);
+        //console.log(this.getBuildingCode() + " " + this.locationListRef);
         //FirebaseService.newLocList = new Array<Location>();
         //this.setBuildingLocation(this.locationListRef.equalTo(this.getBuildingCode));
         var matched = false;
 
         this.getLocationsList().valueChanges().subscribe(res => {
             for (let item of res) {
-              console.log("hello");
+              //console.log("hello");
                 if (item.Key == this.getBuildingCode()) {
                     console.log("Value matched: " + this.getBuildingCode());
                     this.setBuildingLocation(item);
