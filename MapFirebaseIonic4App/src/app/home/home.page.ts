@@ -42,8 +42,7 @@ export class HomePage implements OnInit {
         animation: google.maps.Animation.DROP,
         position: latLng,
         icon: {
-          //url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png'
-          url: 'https://www.clipartmax.com/png/small/69-693540_map-pin-blue-clip-art-at-clker-google-maps-icon-blue.png'
+          url: 'http://maps.google.com/mapfiles/kml/shapes/firedept.png'
       }
       });
     }).catch((error) => {
